@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier Collision | Auto Body & Collision Repair | Yanceyville, NC</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            surface: '#1e293b',
+                            card: '#1e293b/80',
+                            accent: '#06b6d4', // Electric Cyan
+                            amber: '#f59e0b', // Amber highlight
+                            blue: '#2563eb'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #e2e8f0;
+        }
+
+        /* Glassmorphism effects */
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Glow effects */
+        .cyan-glow {
+            box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.4);
+        }
+
+        .amber-glow {
+            box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+
+        /* Before After Slider Styling */
+        .ba-container {
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+            touch-action: pan-y;
+        }
+        .ba-image-before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%;
+            overflow: hidden;
+            z-index: 10;
+        }
+        .ba-slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: #06b6d4;
+            z-index: 20;
+            transform: translateX(-50%);
+            cursor: ew-resize;
+        }
+        .ba-slider-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #06b6d4;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased bg-slate-950 text-slate-100">
+
+    <!-- Top Emergency Contact Header Bar -->
+    <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-b border-slate-800 text-xs sm:text-sm py-2 px-4 text-slate-300">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center gap-1.5 text-cyan-400 font-medium">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i> 3130 NC Hwy 86, Yanceyville, NC
+                </span>
+                <span class="hidden md:inline-flex items-center gap-1.5 text-slate-400">
+                    <i data-lucide="clock" class="w-4 h-4 text-amber-400"></i> Mon-Fri: 8:00 AM - 5:00 PM
+                </span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="mailto:bradley.premiercollision@gmail.com" class="hover:text-cyan-400 transition-colors flex items-center gap-1">
+                    <i data-lucide="mail" class="w-3.5 h-3.5"></i> bradley.premiercollision@gmail.com
+                </a>
+                <a href="https://www.facebook.com/p/Premier-Collision-61556286935388/" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors text-slate-400">
+                    <i data-lucide="facebook" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Main Navigation -->
+    <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo / Title -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-600 to-amber-500 p-0.5 shadow-lg group-hover:scale-105 transition-transform">
+                        <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                            <i data-lucide="shield-check" class="w-6 h-6 text-cyan-400"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black tracking-wider text-white flex items-center gap-1">
+                            PREMIER <span class="text-cyan-400">COLLISION</span>
+                        </span>
+                        <span class="block text-[10px] tracking-widest text-slate-400 uppercase font-semibold">Auto Body Repair & Paint Spec</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#services" class="text-slate-300 hover:text-cyan-400 transition-colors">Services</a>
+                    <a href="#before-after" class="text-slate-300 hover:text-cyan-400 transition-colors">Repair Gallery</a>
+                    <a href="#estimate" class="text-slate-300 hover:text-cyan-400 transition-colors">Get Free Estimate</a>
+                    <a href="#insurance" class="text-slate-300 hover:text-cyan-400 transition-colors">Insurance Info</a>
+                    <a href="#reviews" class="text-slate-300 hover:text-cyan-400 transition-colors">Reviews</a>
+                    <a href="#location" class="text-slate-300 hover:text-cyan-400 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Header Call Button -->
+                <div class="hidden sm:flex items-center space-x-3">
+                    <a href="tel:3366949782" class="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-400 hover:to-cyan-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl shadow-lg cyan-glow transition-all duration-300 hover:scale-105">
+                        <i data-lucide="phone-call" class="w-4 h-4"></i>
+                        <span>(336) 694-9782</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex lg:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#services" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-cyan-400">Services</a>
+            <a href="#before-after" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-cyan-400">Repair Gallery</a>
+            <a href="#estimate" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-cyan-400">Get Estimate</a>
+            <a href="#insurance" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-cyan-400">Insurance Claims</a>
+            <a href="#reviews" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-cyan-400">Reviews</a>
+            <a href="#location" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800 hover:text-cyan-400">Contact & Map</a>
+            <div class="pt-2">
+                <a href="tel:3366949782" class="w-full flex items-center justify-center gap-2 bg-cyan-500 text-slate-950 font-bold py-3 rounded-xl">
+                    <i data-lucide="phone-call" class="w-5 h-5"></i>
+                    Call (336) 694-9782
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-16 lg:py-24">
+        <!-- Automotive Dark Metallic Background Elements -->
+        <div class="absolute inset-0 z-0 bg-slate-950">
+            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=2000&q=80" 
+                 alt="Premier Auto Collision Shop Restorations" 
+                 class="w-full h-full object-cover object-center opacity-20 filter brightness-75 contrast-125"
+                 onerror="this.src='https://placehold.co/1920x1080/0f172a/06b6d4?text=Premier+Collision+Shop'">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-semibold tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                        Yanceyville's Trusted Collision Repair Specialists
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight">
+                        Accident Today? <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-amber-400">
+                            Restored to Perfection Tomorrow.
+                        </span>
+                    </h1>
+
+                    <p class="text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Don't stress over auto damage. Premier Collision handles everything from exact factory color matching and frame straightening to hassle-free insurance processing.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#estimate" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-400 hover:to-cyan-500 text-slate-950 font-bold text-base rounded-xl shadow-xl cyan-glow flex items-center justify-center gap-3 transition-all transform hover:-translate-y-0.5">
+                            <i data-lucide="camera" class="w-5 h-5"></i>
+                            Get Instant Online Quote
+                        </a>
+
+                        <a href="tel:3366949782" class="w-full sm:w-auto px-8 py-4 glass-panel hover:bg-slate-800 text-white font-semibold text-base rounded-xl border border-slate-700 flex items-center justify-center gap-3 transition-all">
+                            <i data-lucide="phone" class="w-5 h-5 text-amber-400"></i>
+                            Call (336) 694-9782
+                        </a>
+                    </div>
+
+                    <!-- Value Highlights -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0 text-left">
+                        <div>
+                            <p class="text-2xl font-extrabold text-cyan-400">100%</p>
+                            <p class="text-xs text-slate-400 font-medium">Satisfaction Guaranteed</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-amber-400">Direct</p>
+                            <p class="text-xs text-slate-400 font-medium">Insurance Claims</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-extrabold text-white">OEM</p>
+                            <p class="text-xs text-slate-400 font-medium">Paint Match Specs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Interactive Quick Estimate Teaser Card -->
+                <div class="lg:col-span-5">
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-700/60 shadow-2xl relative overflow-hidden">
+                        <div class="absolute -right-12 -top-12 w-36 h-36 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                                    <i data-lucide="sparkles" class="w-5 h-5 text-cyan-400"></i> Fast Photo Estimate
+                                </h2>
+                                <p class="text-xs text-slate-400">Upload damage photos for a quick response!</p>
+                            </div>
+                            <span class="text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 px-2.5 py-1 rounded-full">Free Service</span>
+                        </div>
+
+                        <!-- Teaser Steps -->
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <div class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xs shrink-0">1</div>
+                                <div>
+                                    <h3 class="font-semibold text-slate-200">Take Photos of Vehicle Damage</h3>
+                                    <p class="text-xs text-slate-400">Snap 2-3 photos from your smartphone right now.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <div class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xs shrink-0">2</div>
+                                <div>
+                                    <h3 class="font-semibold text-slate-200">Enter Basic Vehicle Specs</h3>
+                                    <p class="text-xs text-slate-400">Year, Make, Model & quick notes on what happened.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <div class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xs shrink-0">3</div>
+                                <div>
+                                    <h3 class="font-semibold text-slate-200">Get Expert Assessment</h3>
+                                    <p class="text-xs text-slate-400">Bradley and our repair team review and contact you fast.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#estimate" class="mt-6 w-full py-3 bg-slate-800 hover:bg-slate-700 text-cyan-400 font-bold text-sm rounded-xl border border-cyan-500/30 flex items-center justify-center gap-2 transition-all">
+                            <span>Open Photo Upload Form</span>
+                            <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 bg-slate-900/60 relative border-t border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Expert Autobody Capabilities</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Comprehensive Collision Services</h2>
+                <p class="text-slate-400 mt-4 text-base">
+                    From minor fender benders and hail dent removal to complete structural frame straightening and custom color matching.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <i data-lucide="car-front" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Major Collision Repair</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Full-scale body reconstruction following structural accidents. We align factory specs to guarantee occupant safety and factory handling.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-1.5 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i> Unibody & Structural Realignment</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i> Airbag & Safety Sensor Alignment</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <i data-lucide="palette" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Computerized Paint Match</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        State-of-the-art paint booth technology for flawless color matching. Seamless blending ensures no visible repair lines or finish variance.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-1.5 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i> OEM Paint Code Spectrum Analysis</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i> Clear Coat & High-Gloss Finish</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <i data-lucide="crosshair" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Frame & Unibody Straightening</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Precision laser measurement equipment pulls and restores heavy chassis bend angles back to exact original manufacturing dimensions.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-1.5 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i> Heavy Frame Pulling Equipment</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i> Structural Rigidity Diagnostics</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <i data-lucide="wrench" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Dent & Hail Damage Repair</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Removing door dings, crease dents, and storm hail impact marks cleanly without harming the vehicle's original factory paint coat.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-1.5 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i> Paintless Dent Removal (PDR)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i> Hail & Acorn Impact Restoration</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Bumper & Fender Repair</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Plastic bumper welding, crack repairs, bracket replacement, and panel align adjustments to avoid buying costly full component assemblies.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-1.5 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i> Plastic Bumper Weld & Refinish</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i> Grill & Lamp Fitting Replacement</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <i data-lucide="file-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Insurance Claim Assistance</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        We take the stress off your hands by working directly with all major auto insurance adjusters to streamline estimate approval and paperwork.
+                    </p>
+                    <ul class="text-xs text-slate-300 space-y-1.5 font-medium">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-amber-400"></i> Direct Insurance Billing</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-amber-400"></i> Supplemental Claims Handling</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE BEFORE & AFTER SLIDER SECTION -->
+    <section id="before-after" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Quality Visual Guarantee</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Interactive Repair Showcase</h2>
+                <p class="text-slate-400 mt-4 text-base">
+                    Drag the slider handle left and right to inspect our craftsmanship before and after complete collision restoration.
+                </p>
+            </div>
+
+            <!-- Comparison Slider Container -->
+            <div class="max-w-4xl mx-auto">
+                <div id="ba-slider-1" class="ba-container rounded-3xl border border-slate-700 shadow-2xl h-[320px] sm:h-[450px] lg:h-[500px]">
+                    
+                    <!-- AFTER Image (Base Layer) -->
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1600&q=80" 
+                         alt="Restored Vehicle After Repairs Premier Collision" 
+                         class="absolute inset-0 w-full h-full object-cover"
+                         onerror="this.src='https://placehold.co/1200x800/0f172a/06b6d4?text=After+Restoration+Premier+Collision'">
+                    
+                    <div class="absolute bottom-4 right-4 bg-slate-900/90 border border-slate-700 text-cyan-400 px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-wider z-10 shadow-md">
+                        AFTER PREMIER REPAIR
+                    </div>
+
+                    <!-- BEFORE Image (Top Layer, clipped) -->
+                    <div class="ba-image-before">
+                        <img src="https://images.unsplash.com/photo-1599256621730-535171e28e50?auto=format&fit=crop&w=1600&q=80" 
+                             alt="Damaged Vehicle Before Repair" 
+                             class="absolute inset-0 w-full h-full object-cover max-w-none"
+                             id="ba-before-img"
+                             onerror="this.src='https://placehold.co/1200x800/1e293b/f59e0b?text=Before+Collision+Damage'">
+                        <div class="absolute bottom-4 left-4 bg-slate-900/90 border border-slate-700 text-amber-400 px-4 py-1.5 rounded-full font-bold text-xs uppercase tracking-wider z-10 shadow-md">
+                            BEFORE DAMAGE
+                        </div>
+                    </div>
+
+                    <!-- Slider Handle -->
+                    <div class="ba-slider-handle">
+                        <div class="ba-slider-button">
+                            <i data-lucide="chevrons-left-right" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center mt-4 text-xs text-slate-400 px-2">
+                    <span class="flex items-center gap-1"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Slide Left for After</span>
+                    <span class="hidden sm:inline-block font-medium text-slate-300">3130 NC Hwy 86 • Yanceyville NC</span>
+                    <span class="flex items-center gap-1">Slide Right for Before <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN FREE ESTIMATE FORM WITH PHOTO UPLOAD -->
+    <section id="estimate" class="py-20 bg-slate-900/80 border-t border-slate-800 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel p-6 sm:p-10 rounded-3xl border border-slate-700/80 shadow-2xl relative">
+                
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-xs font-bold uppercase tracking-wider">Fast Response Estimate</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-3">Request Your Free Estimate</h2>
+                    <p class="text-slate-300 text-sm mt-2">
+                        Upload photos of your auto body damage and provide vehicle details. We'll send you an estimated breakdown promptly!
+                    </p>
+                </div>
+
+                <!-- Estimate Form -->
+                <form id="quote-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    
+                    <!-- Section 1: Contact Details -->
+                    <div>
+                        <h3 class="text-sm font-bold text-cyan-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <i data-lucide="user" class="w-4 h-4"></i> 1. Contact Information
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-300 mb-1">Full Name *</label>
+                                <input type="text" required placeholder="John Doe" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-300 mb-1">Phone Number *</label>
+                                <input type="tel" required placeholder="(336) 555-0199" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label class="block text-xs font-medium text-slate-300 mb-1">Email Address *</label>
+                                <input type="email" required placeholder="john@example.com" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Vehicle Information -->
+                    <div class="pt-4 border-t border-slate-800">
+                        <h3 class="text-sm font-bold text-cyan-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <i data-lucide="car" class="w-4 h-4"></i> 2. Vehicle Details
+                        </h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-300 mb-1">Year *</label>
+                                <input type="text" required placeholder="2021" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-300 mb-1">Make *</label>
+                                <input type="text" required placeholder="Ford / Toyota / Chevrolet" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-300 mb-1">Model *</label>
+                                <input type="text" required placeholder="F-150 / Camry" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-300 mb-1">VIN (Optional)</label>
+                                <input type="text" placeholder="17 Digit VIN" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Damage Upload & Description -->
+                    <div class="pt-4 border-t border-slate-800">
+                        <h3 class="text-sm font-bold text-cyan-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <i data-lucide="camera" class="w-4 h-4"></i> 3. Damage Photos & Description
+                        </h3>
+                        
+                        <!-- Drag and Drop Photo Box -->
+                        <div class="mb-4">
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Upload Collision Photos (Up to 5 pictures)</label>
+                            <div id="drop-zone" onclick="document.getElementById('file-input').click()" class="border-2 border-dashed border-slate-700 hover:border-cyan-400 bg-slate-950/60 rounded-2xl p-6 text-center cursor-pointer transition-all">
+                                <i data-lucide="upload-cloud" class="w-10 h-10 text-cyan-400 mx-auto mb-2"></i>
+                                <p class="text-sm font-semibold text-slate-200">Click or Drag & Drop Photos Here</p>
+                                <p class="text-xs text-slate-400 mt-1">Supports PNG, JPG, JPEG up to 10MB each</p>
+                                <input type="file" id="file-input" multiple accept="image/*" class="hidden" onchange="handleFileSelect(event)">
+                            </div>
+                            <!-- Preview uploaded files -->
+                            <div id="file-preview-container" class="grid grid-cols-3 sm:grid-cols-5 gap-3 mt-3"></div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Description of Damage / Accident Details *</label>
+                            <textarea rows="3" required placeholder="Please describe where the vehicle was hit (e.g. rear driver bumper, side fender scratches)..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors"></textarea>
+                        </div>
+
+                        <div class="mt-4 flex items-center gap-2">
+                            <input type="checkbox" id="insurance-check" class="rounded bg-slate-950 border-slate-700 text-cyan-500 focus:ring-cyan-400 w-4 h-4">
+                            <label for="insurance-check" class="text-xs text-slate-300">This repair will be filed through an auto insurance claim</label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-400 hover:to-cyan-500 text-slate-950 font-black text-lg rounded-xl shadow-xl cyan-glow flex items-center justify-center gap-2 transition-all transform hover:scale-[1.01]">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                        <span>Submit Free Estimate Request</span>
+                    </button>
+                </form>
+
+                <!-- Form Success Message Box -->
+                <div id="success-alert" class="hidden mt-6 bg-emerald-500/20 border border-emerald-500 text-emerald-300 p-6 rounded-2xl text-center">
+                    <i data-lucide="check-circle" class="w-12 h-12 text-emerald-400 mx-auto mb-2"></i>
+                    <h3 class="text-lg font-bold">Estimate Request Received!</h3>
+                    <p class="text-sm mt-1">Thank you for contacting Premier Collision. Bradley or our service team will review your uploaded details and reach back out to you shortly.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INSURANCE CLAIMS SECTION -->
+    <section id="insurance" class="py-16 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-8 bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950">
+                <div class="space-y-4 max-w-2xl">
+                    <div class="inline-flex items-center gap-2 text-xs font-bold text-amber-400 uppercase tracking-widest bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
+                        <i data-lucide="shield-alert" class="w-4 h-4"></i> Stress-Free Process
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-white">We Work With All Insurance Companies</h2>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        In North Carolina, <strong>you have the legal right to choose where your car is repaired</strong>, regardless of what your insurance company recommends. Premier Collision handles claim adjusters, supplemental approvals, and directly bills insurance providers on your behalf.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 shrink-0 w-full lg:w-auto">
+                    <a href="tel:3366949782" class="px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg amber-glow transition-all">
+                        <i data-lucide="phone" class="w-4 h-4"></i> Call Insurance Specialist
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS / REVIEWS SECTION -->
+    <section id="reviews" class="py-20 bg-slate-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Local Reputation</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">What Our Customers Say</h2>
+                <div class="flex items-center justify-center gap-1 text-amber-400 mt-3">
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <span class="text-white font-bold ml-2 text-sm">5.0 Star Rating on Google</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-3">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm italic mb-6">
+                            "Bradley and Premier Collision did an absolutely amazing job on my truck after a deer hit the front end. The paint match is flawless and you can't tell it was ever damaged. Highly recommended local shop!"
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-800 pt-3 flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-sm">M</div>
+                        <div>
+                            <p class="text-xs font-bold text-white">Michael R.</p>
+                            <p class="text-[10px] text-slate-400">Yanceyville Resident</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-3">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm italic mb-6">
+                            "Submitting photos for an online quote was super easy. They handled everything with my insurance claim and had my car back looking brand new ahead of schedule. Great honest service!"
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-800 pt-3 flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-sm">S</div>
+                        <div>
+                            <p class="text-xs font-bold text-white">Sarah T.</p>
+                            <p class="text-[10px] text-slate-400">Caswell County</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-3">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm italic mb-6">
+                            "Best auto body shop in the area! Professional craftsmanship, crystal clear communication throughout the repair process, and no unexpected fees. Will definitely come back if needed."
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-800 pt-3 flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-sm">D</div>
+                        <div>
+                            <p class="text-xs font-bold text-white">David L.</p>
+                            <p class="text-[10px] text-slate-400">Danville Area</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION DETAILS & MAP SECTION -->
+    <section id="location" class="py-20 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                
+                <!-- Business Info Card -->
+                <div class="lg:col-span-5 glass-panel p-8 rounded-3xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Visit Our Shop</span>
+                        <h2 class="text-3xl font-extrabold text-white mt-2 mb-6">Premier Collision</h2>
+
+                        <div class="space-y-5">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold text-white">Shop Address</h3>
+                                    <p class="text-sm text-slate-300">3130 NC Hwy 86<br>Yanceyville, NC 27379</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="phone" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold text-white">Phone Number</h3>
+                                    <a href="tel:3366949782" class="text-sm text-cyan-400 hover:underline font-semibold">(336) 694-9782</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold text-white">Email Address</h3>
+                                    <a href="mailto:bradley.premiercollision@gmail.com" class="text-sm text-cyan-400 hover:underline break-all">bradley.premiercollision@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="clock" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold text-white">Business Hours</h3>
+                                    <p class="text-xs text-slate-300 mt-0.5">Monday – Friday: 8:00 AM – 5:00 PM</p>
+                                    <p class="text-xs text-slate-400">Saturday & Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-800 mt-6 flex gap-3">
+                        <a href="https://maps.google.com/?cid=18151908437237646746" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold rounded-xl text-center transition-colors flex items-center justify-center gap-2">
+                            <i data-lucide="navigation" class="w-4 h-4 text-cyan-400"></i> Get Driving Directions
+                        </a>
+                        <a href="https://www.facebook.com/p/Premier-Collision-61556286935388/" target="_blank" rel="noopener noreferrer" class="px-4 py-3 bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-xs font-bold rounded-xl transition-colors flex items-center justify-center">
+                            <i data-lucide="facebook" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Map iFrame Wrapper -->
+                <div class="lg:col-span-7 rounded-3xl overflow-hidden border border-slate-800 shadow-xl min-h-[350px] relative">
+                    <iframe 
+                        title="Premier Collision Location Map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3215.158371360155!2d-79.336402!3d36.311352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8853355d0110e0bf%3A0xfcebe88c7cf7451a!2sPremier%20Collision!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+                        class="w-full h-full min-h-[350px] border-0 filter grayscale invert contrast-125 opacity-85"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-900 text-slate-400 py-12 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <span class="text-lg font-black text-white">PREMIER <span class="text-cyan-400">COLLISION</span></span>
+                    <p class="text-xs text-slate-500 mt-1">3130 NC Hwy 86, Yanceyville, NC 27379 • (336) 694-9782</p>
+                </div>
+                
+                <div class="flex flex-wrap items-center gap-6 text-xs text-slate-400">
+                    <a href="#services" class="hover:text-cyan-400 transition-colors">Services</a>
+                    <a href="#estimate" class="hover:text-cyan-400 transition-colors">Photo Quote</a>
+                    <a href="#before-after" class="hover:text-cyan-400 transition-colors">Gallery</a>
+                    <a href="https://www.facebook.com/p/Premier-Collision-61556286935388/" target="_blank" class="hover:text-cyan-400 transition-colors">Facebook Page</a>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-900 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <p>&copy; <span id="year"></span> Premier Collision. All rights reserved.</p>
+                <p class="text-slate-600">Designed for Client Preview Demo</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY MOBILE ACTION BAR -->
+    <div class="sm:hidden fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 p-3 z-40 flex items-center gap-3">
+        <a href="tel:3366949782" class="flex-1 py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-black text-center rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg">
+            <i data-lucide="phone" class="w-4 h-4"></i> Call Shop Now
+        </a>
+        <a href="#estimate" class="flex-1 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 text-slate-950 font-black text-center rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg">
+            <i data-lucide="camera" class="w-4 h-4"></i> Get Quote
+        </a>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize Lucide Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // BEFORE & AFTER COMPARISON SLIDER LOGIC
+        const sliderContainer = document.getElementById('ba-slider-1');
+        const beforeImageDiv = sliderContainer.querySelector('.ba-image-before');
+        const sliderHandle = sliderContainer.querySelector('.ba-slider-handle');
+
+        let isDragging = false;
+
+        function setSliderPosition(x) {
+            const rect = sliderContainer.getBoundingClientRect();
+            let offsetX = x - rect.left;
+            
+            if (offsetX < 0) offsetX = 0;
+            if (offsetX > rect.width) offsetX = rect.width;
+
+            const percentage = (offsetX / rect.width) * 100;
+            beforeImageDiv.style.width = `${percentage}%`;
+            sliderHandle.style.left = `${percentage}%`;
+        }
+
+        // Mouse Events
+        sliderContainer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            setSliderPosition(e.clientX);
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            setSliderPosition(e.clientX);
+        });
+
+        // Touch Events
+        sliderContainer.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            setSliderPosition(e.touches[0].clientX);
+        });
+
+        window.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            setSliderPosition(e.touches[0].clientX);
+        });
+
+
+        // PHOTO UPLOAD DRAG & DROP & PREVIEW LOGIC
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const previewContainer = document.getElementById('file-preview-container');
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropZone.classList.add('border-cyan-400', 'bg-slate-900');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('border-cyan-400', 'bg-slate-900');
+            }, false);
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        });
+
+        function handleFileSelect(e) {
+            const files = e.target.files;
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                if (!file.type.startsWith('image/')) return;
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const div = document.createElement('div');
+                    div.className = 'relative group rounded-xl overflow-hidden border border-slate-700 aspect-square';
+                    div.innerHTML = `
+                        <img src="${e.target.result}" class="w-full h-full object-cover">
+                        <button type="button" onclick="this.parentElement.remove()" class="absolute top-1 right-1 bg-red-600 text-white rounded-full p-1 opacity-80 hover:opacity-100">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                    `;
+                    previewContainer.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // FORM SUBMISSION HANDLER
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('quote-form');
+            const alertBox = document.getElementById('success-alert');
+
+            // Hide form and show success message
+            form.classList.add('opacity-50', 'pointer-events-none');
+            alertBox.classList.remove('hidden');
+            
+            // Scroll to alert
+            alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>
